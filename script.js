@@ -28,9 +28,11 @@ const presentsData = {
     Loa: [ 'Stefania', 'Jon', 'Gudfridur' ]
   };  
 
-const params = new URLSearchParams(window.location.search);
-const whoEncoded = params.get("who");
-console.log(whoEncoded);
+// const params = new URLSearchParams(window.location.search);
+// const whoEncoded = params.get("who");
+// console.log(whoEncoded);
+
+const who = "=RWxuYQ==";
 if (whoEncoded) {
     const who = atob(whoEncoded);
     const names = presentsData[who];

@@ -1,0 +1,63 @@
+@font-face {
+  font-family: 'Passions Conflict';
+  src: url('PassionsConflict-Regular.ttf');
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: black;
+}
+
+@keyframes writing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+  background-image: url("santa-christmas-holiday.jpg");
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 0;
+}
+
+#list-content {
+  position: absolute;
+  z-index: 10;
+  top: 45%;
+}
+
+.name {
+  animation: writing 1s steps(50, end);
+  font-family: Passions Conflict, cursive;
+  animation-fill-mode: forwards;
+  font-size: 50pt;
+  margin-top: 0;
+  width: 0;
+  margin-bottom: 0;
+  overflow: hidden;
+}
+
+#name-1 {
+  animation-delay: 0ms;
+}
+
+#name-2 {
+  animation-delay: 1s;
+}
+
+#name-3 {
+  animation-delay: 2s;
+}
+
+@media(max-width: 1050px) {
+  .background {
+    position: fixed;
+    max-width: 100%;
+    height: auto;
+  }
+}

@@ -10,7 +10,7 @@ function handleResize(_event) {
 handleResize();
 
 const sjclScript = document.createElement("script");
-sjclScript.src = "http://bitwiseshiftleft.github.io/sjcl/sjcl.js";
+sjclScript.src = "https://bitwiseshiftleft.github.io/sjcl/sjcl.js";
 sjclScript.async = false;
 sjclScript.onload = () => {
     document.body.removeChild(sjclScript);
@@ -32,7 +32,7 @@ const presentsData = {
 // const whoEncoded = params.get("who");
 // console.log(whoEncoded);
 
-const who = "=RWxuYQ==";
+const whoEncoded = "RWxuYQ==";
 if (whoEncoded) {
     const who = atob(whoEncoded);
     const names = presentsData[who];

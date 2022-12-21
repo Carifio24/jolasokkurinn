@@ -1,10 +1,28 @@
+// All sizes in px
+const imageWidth = 1822;
+const imageHeight = 1646;
+const aspectRatio = imageWidth / imageHeight;
+// const textOffsetX = 728.8;
+// const textOffsetY = 750;
+// const textOffsetPctX = textOffsetX / imageWidth;
+// const textOffsetPctY = textOffsetY / imageHeight;
+const textOffsetPctX = 0.4;
+const textOffsetPctY = 0.45;
+const listPctWidth = 0.238;
+
 function handleResize(_event) {
-    const textOffset = 410;
-    const pictureWidth = 1050;
-    const marginWidths = (window.innerWidth - pictureWidth) / 2;
-    const posX = marginWidths + textOffset;
+    const displayedHeight = window.innerHeight;
+    const displayedWidth = aspectRatio * window.innerHeight;
+    const marginWidths = (window.innerWidth - displayedWidth) / 2;
+    const posX = marginWidths + textOffsetPctX * displayedWidth;
+    const posY = textOffsetPctY * displayedHeight;
     const list = document.querySelector("#list-content");
+    console.log(marginWidths);
+    console.log(textOffsetPctX);
+    console.log(displayedWidth);
+    console.log(posX);
     list.style.left = `${posX}px`;
+    list.style.top = `${posY}px`;
 }
 
 handleResize();

@@ -3,6 +3,13 @@
   src: url('PassionsConflict-Regular.ttf');
 }
 
+:root {
+  --initial-delay: 1s;
+  --duration: 1s;
+  --gap: 0.5s;
+  --delay-gap: calc(var(--initial-delay) + var(--gap));
+}
+
 html, body {
   height: 100%;
   margin: 0;
@@ -28,7 +35,8 @@ html, body {
 #list-content {
   position: absolute;
   z-index: 10;
-  top: 45%;
+  top: 50%;
+  width: 24%;
 }
 
 .name {
@@ -43,15 +51,15 @@ html, body {
 }
 
 #name-1 {
-  animation-delay: 0ms;
+  animation-delay: var(--initial-delay);
 }
 
 #name-2 {
-  animation-delay: 1s;
+  animation-delay: calc(var(--initial-delay) + var(--delay-gap));
 }
 
 #name-3 {
-  animation-delay: 2s;
+  animation-delay: calc(var(--initial-delay) + 2 * var(--delay-gap));
 }
 
 @media(max-width: 1050px) {
@@ -59,5 +67,11 @@ html, body {
     position: fixed;
     max-width: 100%;
     height: auto;
+  }
+}
+
+@media(max-height: 750px) {
+  .name {
+    font-size: 40pt;
   }
 }

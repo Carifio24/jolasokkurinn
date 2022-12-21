@@ -1,5 +1,3 @@
-const sjcl = require("sjcl");
-
 function shuffle(a) {
     let j, x, i;
     for (i = a.length - 1; i > 0; i--) {
@@ -19,7 +17,7 @@ function rotate(array, n) {
 function randomOffsets(size, max) {
     const indices = [];
     while (indices.length < size) {
-        const value = Math.ceil(Math.random() * max);
+        const value = Math.ceil(Math.random() * (max - 1));
         if (!indices.includes(value)) {
             indices.push(value);
         }
@@ -58,8 +56,14 @@ function createPresentsSets(names, setSize) {
 
 }
 
-const names = ["Elna", "Gudfridur", "Stefania", "Kristjan", "Loa", "Jon", "Diddi"];
+const names = ["Elna", "Gudfridur", "Stefania", "Kristjan", "Loa", "Jon"];
 const setSize = 3;
 const results = createPresentsSets(names, setSize);
-const encrypted = sjcl.encrypt("pEg7e31cNASh", JSON.stringify(results));
+const encrypted = Buffer.from(JSON.stringify(results)).toString('base64');
 console.log(encrypted);
+
+const namesMap = {};
+names.forEach(name => {
+    namesMap[name] = Buffer.from(name).toString('base64');
+});
+console.log(namesMap);

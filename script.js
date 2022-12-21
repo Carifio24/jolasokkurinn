@@ -27,37 +27,27 @@ function handleResize(_event) {
 
 handleResize();
 
-const sjclScript = document.createElement("script");
-sjclScript.src = "https://bitwiseshiftleft.github.io/sjcl/sjcl.js";
-sjclScript.async = false;
-sjclScript.onload = () => {
-    document.body.removeChild(sjclScript);
-};
-document.body.appendChild(sjclScript);
 
+const encodedData = "eeyJMb2EiOlsiU3RlZmFuaWEiLCJFbG5hIiwiSm9uIl0sIlN0ZWZhbmlhIjpbIkxvYSIsIktyaXN0amFuIiwiSm9uIl0sIktyaXN0amFuIjpbIlN0ZWZhbmlhIiwiR3VkZnJpZHVyIiwiTG9hIl0sIkd1ZGZyaWR1ciI6WyJFbG5hIiwiS3Jpc3RqYW4iLCJTdGVmYW5pYSJdLCJFbG5hIjpbIkpvbiIsIktyaXN0amFuIiwiR3VkZnJpZHVyIl0sIkpvbiI6WyJFbG5hIiwiR3VkZnJpZHVyIiwiTG9hIl19";
+const presentsData = JSON.parse(atob(encodedData));
 
-const presentsData = {
-    Elna: [ 'Stefania', 'Kristjan', 'Loa' ],
-    Diddi: [ 'Kristjan', 'Gudfridur', 'Elna' ],
-    Jon: [ 'Loa', 'Diddi', 'Gudfridur' ],
-    Stefania: [ 'Jon', 'Loa', 'Elna' ],
-    Kristjan: [ 'Stefania', 'Elna', 'Diddi' ],
-    Gudfridur: [ 'Kristjan', 'Diddi', 'Jon' ],
-    Loa: [ 'Stefania', 'Jon', 'Gudfridur' ]
-  };  
+const namesMap = {
+    'Gudfridur': 'Gu&eth;fr&iacute;&eth;ur',
+    'Stefania': 'Stefan&#xED;a',
+    'Kristjan': 'Kristj&#225n',
+    'Loa': 'L&oacute;a'
+}
 
-// const params = new URLSearchParams(window.location.search);
-// const whoEncoded = params.get("who");
-// console.log(whoEncoded);
-
-const whoEncoded = "RWxuYQ==";
+const params = new URLSearchParams(window.location.search);
+const whoEncoded = params.get("who");
 if (whoEncoded) {
     const who = atob(whoEncoded);
     const names = presentsData[who];
 
     for (let i = 0; i < names.length; i++) {
         const el = document.querySelector(`#name-${i+1}`);
-        el.textContent = names[i];
+        const name = names[i];
+        el.innerHTML = namesMap[name] ?? name;
     }
 }
 

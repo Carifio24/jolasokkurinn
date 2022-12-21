@@ -1,6 +1,6 @@
 @font-face {
-  font-family: 'Passions Conflict';
-  src: url('PassionsConflict-Regular.ttf');
+  font-family: 'Allura';
+  src: url('Allura-Regular.ttf');
 }
 
 :root {
@@ -41,7 +41,7 @@ html, body {
 
 .name {
   animation: writing 1s steps(50, end);
-  font-family: Passions Conflict, cursive;
+  font-family: Allura, cursive;
   animation-fill-mode: forwards;
   font-size: 50pt;
   margin-top: 0;
